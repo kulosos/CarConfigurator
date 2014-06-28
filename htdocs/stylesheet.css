@@ -1,0 +1,79 @@
+@charset "UTF-8";
+/* CSS Document */
+
+html, body 	{ height:  100%; font-family: 'Roboto', sans-serif; font-size:12px;  font-weight:400;}
+.wrapper 		{ height:  100%; min-height: 100%; height: auto !important; margin: 0 0 -120px; width:800px; margin-left:auto; margin-right:auto; }
+.wrapper2 		{ height:  100%; min-height: 100%; height: auto !important; margin: 0 0 -120px; width:640px; margin-left:auto; margin-right:auto; }
+
+.header				{ clear:both; height:30px; width:100%;}
+p.header_left 		{ float:left; padding-left:20px; color:#326ABA; }
+p.header_right		{ float: right; padding-right:20px; }
+p.header_bottom	{ clear:both; width:100%;}
+
+#configdata		{ clear:both; background:#FFFFFF; padding:20px;}
+#configdata h3		{ margin-left:20px; }
+
+.bottomMenu		{ clear:both; text-align:right; margin-top:10px; margin-bottom:10px; font-size:12px;}
+
+
+.debug				{ height: auto; background: #dddddd; clear:both; overflow:auto;
+					  border:1px solid #7b7b7b; color:#009; margin-top:10px; margin-bottom:10px; padding:10px; 
+				     font-family:Consolas, "Andale Mono", "Lucida Console", "Lucida Sans Typewriter", Monaco, "Courier New", monospace; font-size:12px; line-height: 12px; }
+.debugclear		{ text-align:right; clear:both; margin-top:40px;}
+
+a					{ text-decoration:none; color:#000000; padding-left:5px; padding-right:5px; }
+a:visited 			{ text-decoration:none; color:#000000; }
+a:active 			{ text-decoration:none; color:#000000; }
+a:hover, a:focus	{ text-decoration:none; color:#326ABA; cursor:pointer; }
+
+hr 					{ border: none; border-top: 1px solid #326ABA; height: 1px; }
+
+/*----- CARCONFIG TABLE START ----- */
+/*.carConfigTable table				{ border:1px; border-color:#000; padding-left:20px; padding-right:20px; padding-top:5px; padding-bottom:5px; margin-left:20px; margin-right:20px;}
+.carConfigTable table th			{ border:1px; border-color:#000; padding-left:20px; padding-right:20px; padding-top:10px; padding-bottom:10px; }
+.carConfigTable table td, .carConfigTable table tr{ border:1px; border-color:#000; padding-left:20px; padding-right:20px; padding-top:5px; padding-bottom:5px;}*/
+
+#carConfigTable 		{ padding-left:0px;}
+
+.td_HL					{ height:30px; background:#DDDDDD; padding-left:20px; font-weight:800; font-size:14px; text-align:left;}
+.td_midHL				{ height:20px; background:#DDDDDD; padding-left:30px; font-weight:800; font-size:12px; text-align:left;}
+.td_midHL2				{ height:20px; background:#DDDDDD; padding-left:24px; font-weight:800; font-size:12px; text-align:left;}
+.td_HL_r				{ height:30px; background:#DDDDDD; padding-left:20px; font-weight:800; font-size:14px; text-align:right; padding-right:20px;}
+
+.td_model 				{ height:60px; /*background:#C42225;*/ padding-left:20px;}
+.td_model_r			{ height:60px; /*background:#C42225;*/ padding-left:20px; text-align:right; padding-right:20px;}
+.td_model_label		{ height:60px; /*background:#CA8587;*/ padding-left:40px;}
+.td_color 				{ height:50px; /*background:#46BF2D;*/ padding-left:20px;}
+.td_color_r 			{ height:50px; /*background:#46BF2D;*/ padding-left:20px; text-align:right; padding-right:20px;}
+.td_color_label		{ height:50px; /*background:#E02EFC;*/ padding-left:40px;}
+
+.colorToConvert 		{ height:40px; width:40px; min-width:30px; border:1px solid #000000; }
+/*----- CARCONFIG TABLE END ------ */
+
+.debugTable		{ float:left; margin:0px; padding:0px; }
+.debug2				{ float:left; clear:both; margin:0px; padding:0px; }
+textarea			{ margin:0px; padding:0px; width:800px; max-width:800px; height:300px; overflow-style:auto; overflow:scroll; border:1px solid #7b7b7b; color:#009; 
+					  font-family:Consolas, "Andale Mono", "Lucida Console", "Lucida Sans Typewriter", Monaco, "Courier New", monospace; font-size:12px; line-height: 12px;
+					  background: #dddddd;}
+					  				  
+.menuTable table								{ border:1px; border-color:#000; padding-left:10px; padding-right:10px; padding-top:10px; padding-bottom:10px; align:right; clear:both;}
+.menuTable table th							{ border:1px; border-color:#000; padding-left:20px; padding-right:20px; padding-top:10px; padding-bottom:10px; }
+.menuTable table td, .menuTable table tr	{ border:1px; border-color:#000; padding-left:20px; padding-right:20px; padding-top:5px; padding-bottom:5px; height:16px; max-height:16px;}
+
+.button-standard 	{ /*height:16px; */max-height:24px;}
+
+/* -----------------------------------------------------------------------------------------------------------------------------*/
+div.content 			{ margin: auto; width: 100%/*960px*/; margin-top:12px; }
+
+div.broken,
+div.missing 			{ margin: auto; position: relative;	top: 50%; width: 193px; }
+
+div.broken a,
+div.missing a 			{ height: 63px; position: relative; top: -31px;	}
+
+div.broken img,
+div.missing img 		{ border-width: 0px;}
+div.broken 			{ display: none; }
+
+div#unityPlayer 		{ cursor: default; height: 475px; width: auto/*960px*/;	clear:both;}
+/* -----------------------------------------------------------------------------------------------------------------------------*/

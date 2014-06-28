@@ -1,0 +1,158 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<title>CarConfigurator</title>
+        
+        <link rel="stylesheet" type="text/css" href="stylesheet.css">
+        <link href='http://fonts.googleapis.com/css?family=Roboto:100,300' rel='stylesheet' type='text/css'>
+      
+		<script type='text/javascript' src='jquery.min.js'></script>
+		<script type="text/javascript">
+		<!--
+		var unityObjectUrl = "UnityObject2.js";
+		if (document.location.protocol == 'https:')
+			unityObjectUrl = unityObjectUrl.replace("http://", "https://ssl-");
+		document.write('<script type="text\/javascript" src="' + unityObjectUrl + '"><\/script>');
+		-->
+		</script>
+		<script type="text/javascript">
+		<!--
+			var wpWidth = 960/1.2;
+			var wpHeight = 600/1.2;
+		
+			var config = {
+				width: wpWidth, 
+				height: wpHeight,
+				params: { enableDebugging:"1" }
+				
+			};
+			var u = new UnityObject2(config);
+
+			jQuery(function() {
+
+				var $missingScreen = jQuery("#unityPlayer").find(".missing");
+				var $brokenScreen = jQuery("#unityPlayer").find(".broken");
+				$missingScreen.hide();
+				$brokenScreen.hide();
+				
+				u.observeProgress(function (progress) {
+					switch(progress.pluginStatus) {
+						case "broken":
+							$brokenScreen.find("a").click(function (e) {
+								e.stopPropagation();
+								e.preventDefault();
+								u.installPlugin();
+								return false;
+							});
+							$brokenScreen.show();
+						break;
+						case "missing":
+							$missingScreen.find("a").click(function (e) {
+								e.stopPropagation();
+								e.preventDefault();
+								u.installPlugin();
+								return false;
+							});
+							$missingScreen.show();
+						break;
+						case "installed":
+							$missingScreen.remove();
+						break;
+						case "first":
+						break;
+					}
+				});
+				u.initPlugin(jQuery("#unityPlayer")[0], "CarConfigurator_Build51.unity3d");
+			});
+		-->
+		</script>
+
+       <script type='text/javascript' src='XMLParser.js'></script>
+       <script type='text/javascript' src='debug.js'></script>
+       <script type='text/javascript' src='RGBColor.js'></script>
+       <script type='text/javascript' src='FileStream.js'></script>
+       
+       <!--  ### include - jsPDF-0.9.0rc2 ### -->
+		<script type='text/javascript' src='./jsPDF-0.9.0rc2/jspdf.js'></script>
+       <script type='text/javascript' src='./jsPDF-0.9.0rc2/jspdf.plugin.cell.js'></script>
+		<script type="text/javascript" src="./jsPDF-0.9.0rc2/libs/FileSaver.js/FileSaver.js"></script>
+		<script type="text/javascript" src="./jsPDF-0.9.0rc2/libs/Blob.js/Blob.js"></script>
+		<script type="text/javascript" src="./jsPDF-0.9.0rc2/libs/Blob.js/BlobBuilder.js"></script>
+
+		<script type="text/javascript" src="./jsPDF-0.9.0rc2/libs/Deflate/deflate.js"></script>
+		<script type="text/javascript" src="./jsPDF-0.9.0rc2/libs/Deflate/adler32cs.js"></script>
+
+		<script type="text/javascript" src="./jsPDF-0.9.0rc2/jspdf.plugin.addimage.js"></script>
+		<script type="text/javascript" src="./jsPDF-0.9.0rc2/jspdf.plugin.from_html.js"></script>
+		<script type="text/javascript" src="./jsPDF-0.9.0rc2/jspdf.plugin.ie_below_9_shim.js"></script>
+		<script type="text/javascript" src="./jsPDF-0.9.0rc2/jspdf.plugin.sillysvgrenderer.js"></script>
+		<script type="text/javascript" src="./jsPDF-0.9.0rc2/jspdf.plugin.split_text_to_size.js"></script>
+		<script type="text/javascript" src="./jsPDF-0.9.0rc2/jspdf.plugin.standard_fonts_metrics.js"></script>
+       
+       <!-- own pdf scripts -->
+		<script type='text/javascript' src='pdf.js'></script>
+
+</head>
+	<body>
+    
+    <div class="wrapper">
+    
+    	<div class="header">
+           <p class="header_left">CarConfigurator</p>
+           <p class="header_right">Julius Jay Butler &middot; Oliver Kulas</p>
+           <p class="header_bottom"><hr /></p>
+       </div>
+       
+		<div class="content">
+        <!--<div class="wrapper2">-->
+			<div id="unityPlayer">
+				<div class="missing">
+					<a href="http://unity3d.com/webplayer/" title="Unity Web Player. Install now!">
+						<img alt="Unity Web Player. Install now!" src="http://webplayer.unity3d.com/installation/getunity.png" width="193" height="63" />
+					</a>
+				</div>
+				<div class="broken">
+					<a href="http://unity3d.com/webplayer/" title="Unity Web Player. Install now! Restart your browser after install.">
+						<img alt="Unity Web Player. Install now! Restart your browser after install." src="http://webplayer.unity3d.com/installation/getunityrestart.png" width="193" height="63" />
+					</a>
+				</div>
+			</div>
+          <!--</div>-->
+		</div>
+        
+        
+        <div id="configdata">
+       		 <!-- CARCONFIGURATION DATA FROM UNITY (XML / XSL) -->              
+        </div>
+        
+        <div class="bottomMenu">
+        
+            <hr />
+            <table class="menuTable" id="menuTable1" border="0" align="right">
+                <tr>
+                  <!--<td>Select File to Load</td>-->
+                  <td><input type="file" id="fileToLoad" class="button-standard"></td>
+                  <td><button onclick="loadFileAsText()" class="button-standard" >Load Config</button><td>
+                  <td><button onclick="saveXMLAsFile()" class="button-standard" >Save Config </button></td>
+                  <td><button onclick="" id="printPdfBtn" class="button-standard"  >Print PDF</button></td>
+                  <td><button onclick="" id="activateDebug" class="button-standard" >Deactivate Debug Console</button></td>
+              		<td><button onclick="" id="refreshDataBtn" class="button-standard" >Refresh</button></td>
+                  <td><input type="checkbox" id="autoRefresh" value="Auto"  checked="checked" /><!-- <label for = "autoRefresh">auto</label> --></td>
+                </tr>
+            </table>
+
+        </div>
+        
+        <div class="debugclear"> <a  id="clearDebug" >clear</a> </div>
+        
+        <div class="debug2">
+        <textarea id="debugOutputArea"></textarea>
+                
+        </div>
+        <a name="bottom"></a>
+        
+	</div>
+
+	</body>
+</html>
